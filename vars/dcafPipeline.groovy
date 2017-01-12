@@ -6,7 +6,7 @@
 
 //This script further assumes that Jenkins is configured (via the Pipeline Shared Libraries plugin) to implicitly include https://github.com/LabVIEW-DCAF/buildsystem
 
-import groovy.json.JsonOutput
+//This script also needs this on its caller: import groovy.json.JsonOutput
 
 def call(utfPath,vipbPath,lvVersion,repoName){
 
