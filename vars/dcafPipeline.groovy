@@ -8,7 +8,7 @@
 
 import groovy.json.JsonOutput
 
-def call(utfPath,vipbPath,vipbInstall,lvVersion,repoName){
+def call(utfPath,vipbPath,lvVersion,repoName){
 
   node {
       echo 'Starting build...'
