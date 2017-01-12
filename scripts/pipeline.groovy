@@ -15,7 +15,7 @@ node {
     }
     
     stage ('VIPB_Build'){
-      vipbBuild(vipbPath,vipbInstall)
+      vipbBuild(vipbPath,lvVersion)
     }
     
     stage ('VIP_Deploy'){
