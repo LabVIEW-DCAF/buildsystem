@@ -15,11 +15,11 @@ def call(utfPath,vipbPath,lvVersion,repoName){
       }
 
       stage ('UTF'){
-          utfTest(utfPath)    
+          //utfTest(utfPath)    
       }
 
       stage ('VIPB_Build'){
-        vipbBuild(vipbPath,lvVersion)
+        //vipbBuild(vipbPath,lvVersion)
       }
 
       stage ('VIP_Deploy'){
