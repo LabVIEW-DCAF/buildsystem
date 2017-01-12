@@ -1,3 +1,5 @@
+import groovy.json.JsonOutput
+
 def call(repoName){
         echo 'Push the package to the internal repo'
         echo 'Scan build_temp directory for *.vipb pattern, call the web service each time it finds one.'
