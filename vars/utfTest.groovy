@@ -1,6 +1,6 @@
 def call(path){
         echo 'Run basic tests before build'
-        def utf_json = JsonOutput.toJson(['Project Path': "${path}", Executor_Number: env.EXECUTOR_NUMBER.toString(), 'Workspace_Path': env.WORKSPACE+'\\build_temp'])
+        def utf_json = JsonOutput.toJson(['Project Path': "${WORKSPACE}\\${path}", Executor_Number: env.EXECUTOR_NUMBER.toString(), 'Workspace_Path': env.WORKSPACE+'\\build_temp'])
         echo utf_json
         
         def utf_response = httpRequest "http://localhost:8002/LabVIEWCIService/Run_UTF?JSON="+java.net.URLEncoder.encode(utf_json, "UTF-8").replaceAll("\\+", "%20")
