@@ -9,9 +9,9 @@ def call(repoName){
 
         def files = findFiles(glob: 'build_temp\\*.vip')
 
-        echo "Found "+files.length()+" VI Package files."
+        echo "Found "+files.length+" VI Package files."
 
-        if(files.length()){
+        if(files.length){
 //make this a loop across all items in the files[] array.
                 
                 echo """${files[0].name}
