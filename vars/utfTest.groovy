@@ -1,3 +1,5 @@
+import groovy.json.JsonOutput
+
 def call(path){
         echo 'Run basic tests before build'
         def utf_json = JsonOutput.toJson(['Project Path': "${WORKSPACE}\\${path}", Executor_Number: env.EXECUTOR_NUMBER.toString(), 'Workspace_Path': env.WORKSPACE+'\\build_temp'])
