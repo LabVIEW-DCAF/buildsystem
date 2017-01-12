@@ -9,17 +9,20 @@ def call(repoName){
 
         def files = findFiles(glob: 'build_temp\\*.vip')
 
-        echo """${files[0].name}
+        echo "Found "+files.length()+" VI Package files."
 
-                ${files[0].path}
-
-                ${files[0].directory}
-
-                ${files[0].length}
-
-                ${files[0].lastModified}"""
         if(files.length()){
 //make this a loop across all items in the files[] array.
+                
+                echo """${files[0].name}
+
+                        ${files[0].path}
+
+                        ${files[0].directory}
+
+                        ${files[0].length}
+
+                        ${files[0].lastModified}"""
                 def vip_json = JsonOutput.toJson(['VIP Path': env.WORKSPACE+"\\"+files[0].path,"Repo Name":"${repoName}"])
                 echo vip_json
 
