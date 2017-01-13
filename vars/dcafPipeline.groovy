@@ -20,6 +20,9 @@ def call(utfPath,vipbPath,lvVersion,repoName){
 
       stage ('VIPB_Build'){
         //vipbBuild(vipbPath,lvVersion)
+        bat 'dir'
+        def workspace_files = bat returnStdout: true, script: 'dir'
+        echo workspace_files
       }
 
       stage ('VIP_Deploy'){
