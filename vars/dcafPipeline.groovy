@@ -9,12 +9,16 @@
 def call(utfPath,vipbPath,lvVersion,repoName){
 
   node {
-    bat 'dir'
-      echo 'Starting build...'
+        bat 'dir'
+        echo 'Starting build...'
       stage ('Pre-Clean'){
         preClean()
       }
-
+      stage ('SCM'){
+        echo 'Attempting to get source from repo...'
+        checkout scm
+        bat 'dir'
+      }
       stage ('UTF'){
         bat 'dir'
           //utfTest(utfPath)    
