@@ -14,7 +14,7 @@ def call(utfPath,vipbPath,lvVersion,repoName){
       stage ('Pre-Clean'){
         preClean()
       }
-      stage ('SCM'){
+      stage ('SCM_Checkout'){
         echo 'Attempting to get source from repo...'
         checkout scm
         //bat 'dir'
@@ -38,5 +38,8 @@ def call(utfPath,vipbPath,lvVersion,repoName){
         //bat 'dir'
         postClean()
       }    
+    stage ('SCM commit'){
+      gitCommit()
+    }
   }
 }
