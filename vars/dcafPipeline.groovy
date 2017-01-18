@@ -8,7 +8,7 @@
 
 def call(utfPath,vipbPath,lvVersion,repoName){
 
-  node {
+  node ('Alfred'){
         //bat 'dir'
         echo 'Starting build...'
       stage ('Pre-Clean'){
