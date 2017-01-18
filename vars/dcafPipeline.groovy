@@ -34,7 +34,7 @@ def call(utfPath,vipbPath,lvVersion,repoName){
         vipPublish(repoName)
       }
     stage ('SCM commit'){
-      gitCommit()
+      commitGit()
     }
       stage ('Post-Clean'){
         //bat 'dir'
