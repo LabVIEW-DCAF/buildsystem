@@ -9,7 +9,7 @@
 def call(utfPath,vipbPath,lvVersion,repoName){
 
   node {
-        bat 'dir'
+        //bat 'dir'
         echo 'Starting build...'
       stage ('Pre-Clean'){
         preClean()
@@ -17,27 +17,25 @@ def call(utfPath,vipbPath,lvVersion,repoName){
       stage ('SCM'){
         echo 'Attempting to get source from repo...'
         checkout scm
-        bat 'dir'
+        //bat 'dir'
       }
       stage ('UTF'){
-        bat 'dir'
-          //utfTest(utfPath)    
+        //bat 'dir'
+          utfTest(utfPath)    
       }
 
       stage ('VIPB_Build'){
-        //vipbBuild(vipbPath,lvVersion)
-        bat 'dir'
-        def workspace_files = bat returnStdout: true, script: 'dir'
-        echo workspace_files
+        vipbBuild(vipbPath,lvVersion)
+        //bat 'dir'
       }
 
       stage ('VIP_Deploy'){
-        bat 'dir'
+        //bat 'dir'
         vipPublish(repoName)
       }
 
       stage ('Post-Clean'){
-        bat 'dir'
+        //bat 'dir'
         postClean()
       }    
   }
