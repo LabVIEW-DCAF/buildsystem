@@ -33,13 +33,12 @@ def call(utfPath,vipbPath,lvVersion,repoName){
         //bat 'dir'
         vipPublish(repoName)
       }
-
+    stage ('SCM commit'){
+      gitCommit()
+    }
       stage ('Post-Clean'){
         //bat 'dir'
         postClean()
       }    
-    stage ('SCM commit'){
-      gitCommit()
-    }
   }
 }
