@@ -9,12 +9,14 @@
 def call(utfPath,vipbPath,lvVersion,repoName){
 
   node {
+    bat 'dir'
       echo 'Starting build...'
       stage ('Pre-Clean'){
         preClean()
       }
 
       stage ('UTF'){
+        bat 'dir'
           //utfTest(utfPath)    
       }
 
@@ -26,10 +28,12 @@ def call(utfPath,vipbPath,lvVersion,repoName){
       }
 
       stage ('VIP_Deploy'){
+        bat 'dir'
         vipPublish(repoName)
       }
 
       stage ('Post-Clean'){
+        bat 'dir'
         postClean()
       }    
   }
