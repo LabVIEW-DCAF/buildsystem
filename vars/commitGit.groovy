@@ -1,7 +1,7 @@
 def call(vipbPath){
   echo 'Commit only the VIPB such that the build number is correctly updated between builds, even if the build machine is lost'
   
- withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'MyID', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
+ withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'DCAF-Builder', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
     bat 'git config user.name'
     bat 'git config user.email'
     bat 'git config --global user.email "mpollock@ni.com"'
