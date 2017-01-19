@@ -3,6 +3,6 @@ def call(){
     bat 'dir'
     deleteDir()
     bat 'dir'
-    bat '''mkdir build_temp'''
+    bat 'mkdir build_temp'
     bat 'dir'
 }
