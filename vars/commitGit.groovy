@@ -3,5 +3,5 @@ def call(vipbPath){
   bat 'git config --global user.email "mpollock@ni.com"'
   bat 'git config --global user.name "DCAF Build Server"'
   bat 'git commit -m "Auto-update files from build" '+'"'+vipbPath+'"'
-  bat 'git push origin master'
+  bat 'git push origin HEAD:master'
 }
