@@ -5,8 +5,9 @@ def call(vipbPath){
     bat 'git config user.name'
     bat 'git config user.email'
     echo env.GIT_BRANCH
-    bat 'git config --global user.email "mpollock@ni.com"'
-    bat 'git config --global user.name "DCAF Build Server"'
+   //These lines are commented out because they were only needed once to set up the build environment.  They needed to be called from script because script runs as a different user, and I couldn't be arsed to find the right spot for it globally for all users.
+   // bat 'git config --global user.email "mpollock@ni.com"'
+   // bat 'git config --global user.name "DCAF Build Server"'
     bat 'git commit -m "Auto-update files from build" '+'"'+vipbPath+'"'
     def git_remote_url=bat 'git remote get-url origin'
    git_remote_url=git_remote_url-'https://'
