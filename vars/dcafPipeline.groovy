@@ -38,7 +38,7 @@ def call(utfPath,vipbPath,lvVersion,repoName){
       }
     stage ('SCM commit'){
       bat 'dir'
-      commitGit()
+      commitGit(vipbPath)
     }
       stage ('Post-Clean'){
         bat 'dir'
