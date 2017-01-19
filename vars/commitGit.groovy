@@ -8,6 +8,9 @@ def call(vipbPath){
     bat 'git config --global user.email "mpollock@ni.com"'
     bat 'git config --global user.name "DCAF Build Server"'
     bat 'git commit -m "Auto-update files from build" '+'"'+vipbPath+'"'
-   bat "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@${env.GIT_URL} HEAD:master"
+    def git_remote_url=bat 'git remote get-url origin'
+   git_remote_url=git_remote_url-'https://'
+   bat "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@${git_remote_url} HEAD:master"
+   //Note: need to replace master in above line with actual branch.  Currently git environment variables are not populated in pipeline scripts, so need to find another way from command line.
  }
 }
