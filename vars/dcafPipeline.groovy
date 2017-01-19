@@ -9,7 +9,6 @@
 def call(utfPath,vipbPath,lvVersion,repoName){
 
   node ('Alfred'){
-        //bat 'dir'
         echo 'Starting build...'
       stage ('Pre-Clean'){
         preClean()
@@ -17,33 +16,26 @@ def call(utfPath,vipbPath,lvVersion,repoName){
       stage ('SCM_Checkout'){
         echo 'Attempting to get source from repo...'
         checkout scm
-        bat 'dir'
       }
       stage ('Temp Directories'){
         bat 'mkdir build_temp'
       }
       stage ('UTF'){
-        bat 'dir'
-          utfTest(utfPath)    
+        utfTest(utfPath)    
       }
 
       stage ('VIPB_Build'){
         vipbBuild(vipbPath,lvVersion)
-        bat 'dir'
       }
 
       stage ('VIP_Deploy'){
-        bat 'dir'
         vipPublish(repoName)
       }
     stage ('SCM commit'){
-      bat 'dir'
       commitGit(vipbPath)
     }
       stage ('Post-Clean'){
-        bat 'dir'
-        //postClean()
-        echo 'skipping post clean for debug purposes.'
+        postClean()
       }    
   }
 }
