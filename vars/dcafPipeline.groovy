@@ -19,6 +19,9 @@ def call(utfPath,vipbPath,lvVersion,repoName){
         checkout scm
         bat 'dir'
       }
+      stage ('Temp Directories'){
+        bat 'mkdir build_temp'
+      }
       stage ('UTF'){
         bat 'dir'
           utfTest(utfPath)    
