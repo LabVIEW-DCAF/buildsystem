@@ -9,7 +9,7 @@ def call(vipbPath){
    // bat 'git config --global user.email "mpollock@ni.com"'
    // bat 'git config --global user.name "DCAF Build Server"'
     bat 'git commit -m "Auto-update files from build" '+'"'+vipbPath+'"'
-    def git_remote_url=bat returnStdout: true, @script: 'git remote get-url origin'
+    def git_remote_url=bat returnStdout: true, script: '@git remote get-url origin'
    echo "Remote_URL raw: "+git_remote_url
    
     def git_remote_url2=bat 'git remote get-url origin'
