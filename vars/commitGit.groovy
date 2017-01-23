@@ -10,7 +10,7 @@
    // bat 'git config --global user.name "DCAF Build Server"'
     bat 'git commit -m "Auto-update files from build" '+'"'+vipbPath+'"'
     def git_remote_url=bat returnStdout: true, script: 'git remote get-url origin'
-   git_remote_url=git+remote_url.trim()     //get rid of any trailing end of line characters
+   git_remote_url=git_remote_url.trim()     //get rid of any trailing end of line characters
    git_remote_url=git_remote_url.drop(8)    //Drop first 8 characters, which in our case are the https:// chars.  This might break if we change access modes.
    bat "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@${git_remote_url} HEAD:master"
    //Note: need to replace master in above line with actual branch.  Currently git environment variables are not populated in pipeline scripts, so need to find another way from command line.
