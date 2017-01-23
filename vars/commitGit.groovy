@@ -1,4 +1,5 @@
-  def call(vipbPath){
+
+def call(vipbPath){
   echo 'Commit only the VIPB such that the build number is correctly updated between builds, even if the build machine is lost'
   
  withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'DCAF-Builder', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
@@ -11,6 +12,9 @@
     bat 'git commit -m "Auto-update files from build" '+'"'+vipbPath+'"'
     def git_remote_url=bat returnStdout: true, script: 'git remote get-url origin'
    echo "Remote_URL raw: "+git_remote_url
+   
+    def git_remote_url2=bat 'git remote get-url origin'
+   echo "Without returning std out: "+git_remote_url2
    git_remote_url=git_remote_url.trim()     //get rid of any trailing end of line characters
    echo git_remote_url
    git_remote_url=git_remote_url.drop(8)    //Drop first 8 characters, which in our case are the https:// chars.  This might break if we change access modes.
