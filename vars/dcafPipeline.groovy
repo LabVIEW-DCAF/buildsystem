@@ -8,7 +8,7 @@
 
 def call(utfPath,vipbPath,lvVersion,repoName){
 
-  node ('Alfred'){
+  node {
         echo 'Starting build...'
       stage ('Pre-Clean'){
         preClean()
@@ -38,4 +38,10 @@ def call(utfPath,vipbPath,lvVersion,repoName){
         postClean()
       }    
   }
+  node{
+    stage ('Integration Test'){
+      echo 'Integration test start'
+      echo 'Integration test stubbed out for now...'
+      echo 'Integration test complete'
+    }
 }
