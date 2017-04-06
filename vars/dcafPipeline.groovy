@@ -44,4 +44,5 @@ def call(utfPath,vipbPath,lvVersion,repoName){
       echo 'Integration test stubbed out for now...'
       echo 'Integration test complete'
     }
+  }
 }
