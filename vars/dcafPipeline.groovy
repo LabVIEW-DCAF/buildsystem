@@ -8,7 +8,7 @@
 
 def call(utfPath,vipbPath,lvVersion,repoName){
 
-  node {
+  node{
         echo 'Starting build...'
       stage ('Pre-Clean'){
         preClean()
