@@ -6,6 +6,7 @@ def call(vipbPath){
     bat 'git config user.email'
     
    echo '-------------------'
+   bat 'git rev-parse --abbrev-ref HEAD'
     git_branch = bat returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD'.trim()
     echo git_branch
    echo '--------------------'
