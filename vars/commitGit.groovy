@@ -4,7 +4,7 @@ def call(vipbPath){
  withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'DCAF-Builder', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
     bat 'git config user.name'
     bat 'git config user.email'
-    echo env.GIT_BRANCH
+    echo '${env.BRANCH_NAME}'
    //These lines are commented out because they were only needed once to set up the build environment.  They needed to be called from script because script runs as a different user, and I couldn't be arsed to find the right spot for it globally for all users.
    // bat 'git config --global user.email "mpollock@ni.com"'
    // bat 'git config --global user.name "DCAF Build Server"'
