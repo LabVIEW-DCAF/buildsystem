@@ -6,12 +6,10 @@ def call(vipbPath){
     bat 'git config user.email'
     
    echo '-------------------'
-   sh '//...
-    git rev-parse --abbrev-ref HEAD > GIT_BRANCH'
+   bat 'git rev-parse --abbrev-ref HEAD > GIT_BRANCH'
     git_branch = readFile('GIT_BRANCH').trim()
     echo git_branch
-    //...
-   '
+   echo '--------------------'
    //These lines are commented out because they were only needed once to set up the build environment.  They needed to be called from script because script runs as a different user, and I couldn't be arsed to find the right spot for it globally for all users.
    // bat 'git config --global user.email "mpollock@ni.com"'
    // bat 'git config --global user.name "DCAF Build Server"'
