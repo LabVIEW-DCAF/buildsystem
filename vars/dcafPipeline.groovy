@@ -9,9 +9,6 @@
 def call(utfPath,vipbPath,lvVersion,repoName){
 
   node{
-        stage ('Check Preconditions for Build'){
-        checkCommits()
-      }
         echo 'Starting build...'
       stage ('Pre-Clean'){
         preClean()
@@ -20,6 +17,9 @@ def call(utfPath,vipbPath,lvVersion,repoName){
         echo 'Attempting to get source from repo...'
         checkout scm
       }
+        stage ('Check Preconditions for Build'){
+        checkCommits()
+      }    
       stage ('Temp Directories'){
         bat 'mkdir build_temp'
       }
