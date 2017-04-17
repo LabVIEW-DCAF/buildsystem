@@ -11,7 +11,7 @@ def call(){
         for (int j = 0; j < entries.length; j++) {
             def entry = entries[j]
             truncated_msg = entry.msg.take(MAX_MSG_LEN)
-            if truncated_msg != "Auto-update files from build, ignore this commit"{
+            if (truncated_msg != "Auto-update files from build, ignore this commit"){
                 internalChangesOnly=false
             }
             changeString += " - ${truncated_msg} [${entry.author}]\n"
