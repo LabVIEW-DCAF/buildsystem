@@ -35,7 +35,7 @@ def call(utfPath,vipbPath,lvVersion,repoName){
         vipPublish(repoName)
       }
     stage ('SCM commit'){
-      commitGit(vipbPath)
+      commitPackageToGit(vipbPath)
     }
       stage ('Post-Clean'){
         postClean()
