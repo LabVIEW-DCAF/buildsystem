@@ -7,7 +7,7 @@ def call(vipbPath){
    //These lines are commented out because they were only needed once to set up the build environment.  They needed to be called from script because script runs as a different user, and I couldn't be arsed to find the right spot for it globally for all users.
    // bat 'git config --global user.email "mpollock@ni.com"'
    // bat 'git config --global user.name "DCAF Build Server"'
-    bat 'git commit -m "Auto-update files from build" '+'"'+vipbPath+'"'
+    bat 'git commit -m "Auto-update files from build, ignore this commit" '+'"'+vipbPath+'"'
     def git_remote_url=bat returnStdout: true, script: '@git remote get-url origin'
    echo "Remote_URL raw: "+git_remote_url
    git_remote_url=git_remote_url.trim()     //get rid of any trailing end of line characters
