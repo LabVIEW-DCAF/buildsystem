@@ -17,6 +17,9 @@ def call(utfPath,vipbPath,lvVersion,repoName){
         echo 'Attempting to get source from repo...'
         checkout scm
       }
+      stage ('Check Commits'){
+        checkCommits()
+      }
       stage ('Temp Directories'){
         bat 'mkdir build_temp'
       }
