@@ -28,4 +28,7 @@ def call(){
         currentBuild.result = 'ABORTED'
         error('This build contains only the version update commit from the last build - no need to build again.')
     }
+    else{
+        echo 'Build may proceed - this build was not triggered solely by the automatic version update commit from the previous build.'
+    }
 }
