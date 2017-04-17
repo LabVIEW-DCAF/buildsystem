@@ -23,4 +23,9 @@ def call(){
         internalChangesOnly = false
     }
     echo changeString
+    if (internalChangesOnly){
+        echo 'This build contains only the version update commit from the last build - no need to build again.  Aborting build.'
+        currentBuild.result = 'ABORTED'
+        error('This build contains only the version update commit from the last build - no need to build again.')
+    }
 }
