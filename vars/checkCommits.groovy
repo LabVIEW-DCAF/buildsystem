@@ -1,4 +1,4 @@
-def call(){
+def call(continueBuild){
     echo 'Checking for commits that were not made by the build system' 
     MAX_MSG_LEN = 100
     def internalChangesOnly = true
@@ -24,11 +24,12 @@ def call(){
     }
     echo changeString
     if (internalChangesOnly){
-        echo 'This build contains only the version update commit from the last build - no need to build again.  Aborting build.'
-        currentBuild.result = 'ABORTED'
-        error('This build contains only the version update commit from the last build - no need to build again.')
+        echo 'This build contains only the version update commit from the last build - no need to build again.  Exiting build.'
+        continueBuild=false
     }
     else{
         echo 'Build may proceed - this build was not triggered solely by the automatic version update commit from the previous build.'
+        continueBuild=true
     }
+    return continueBuild
 }
