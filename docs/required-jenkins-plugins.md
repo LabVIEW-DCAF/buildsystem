@@ -1,4 +1,5 @@
 # Required Jenkins plugins
+## This list is incorrect right now - was grabbed from another project
 Plugin name                                                                                       | Description
 ------------------------------------------------------------------------------------------------- | ----------------------------------------------
 [Build timeout plugin](http://wiki.jenkins-ci.org/display/JENKINS/Build-timeout+Plugin)           | Allows you to set a time, if the job runs longer it will get automatically cancelled.
