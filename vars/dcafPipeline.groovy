@@ -7,7 +7,7 @@
 //This script further assumes that Jenkins is configured (via the Pipeline Shared Libraries plugin) to implicitly include https://github.com/LabVIEW-DCAF/buildsystem
 
 def call(utfPath,vipbPath,lvVersion,repoName){
-
+def continueBuild
   node{
         echo 'Starting build...'
       stage ('Pre-Clean'){
@@ -18,34 +18,29 @@ def call(utfPath,vipbPath,lvVersion,repoName){
         checkout scm
       }
         stage ('Check Preconditions for Build'){
-        checkCommits()
-      }    
-      stage ('Temp Directories'){
-        bat 'mkdir build_temp'
+        continueBuild=checkCommits()
       }
-      stage ('UTF'){
-        utfTest(utfPath)    
-      }
+    if(continueBuild){
+        stage ('Temp Directories'){
+          bat 'mkdir build_temp'
+        }
+        stage ('UTF'){
+          utfTest(utfPath)    
+        }
 
-      stage ('VIPB_Build'){
-        vipbBuild(vipbPath,lvVersion)
-      }
+        stage ('VIPB_Build'){
+          vipbBuild(vipbPath,lvVersion)
+        }
 
-      stage ('VIP_Deploy'){
-        vipPublish(repoName)
+        stage ('VIP_Deploy'){
+          vipPublish(repoName)
+        }
+      stage ('SCM commit'){
+        commitPackageToGit(vipbPath)
       }
-    stage ('SCM commit'){
-      commitPackageToGit(vipbPath)
-    }
-      stage ('Post-Clean'){
-        postClean()
-      }    
-  }
-  node{
-    stage ('Integration Test'){
-      echo 'Integration test start'
-      echo 'Integration test stubbed out for now...'
-      echo 'Integration test complete'
+        stage ('Post-Clean'){
+          postClean()
+        }    
     }
   }
-}
+
