@@ -33,7 +33,7 @@ def continueBuild
         }
 
         stage ('VIP_Deploy'){
-          vipPublish(repoName)
+          vipPublish('DCAF Unstable')
         }
       stage ('SCM commit'){
         commitPackageToGit(vipbPath)
