@@ -1,7 +1,7 @@
 def call(vipbPath){
   echo 'Commit only the VIPB such that the build number is correctly updated between builds, even if the build machine is lost'
   
- withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'DCAF-Builder', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
+ withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'DCAF-Build', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
     bat 'git config user.name'
     bat 'git config user.email'
    //These lines are commented out because they were only needed once to set up the build environment.  They needed to be called from script because script runs as a different user, and I couldn't be arsed to find the right spot for it globally for all users.
