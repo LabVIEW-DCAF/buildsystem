@@ -31,7 +31,7 @@ def continueBuild
         }
 
         stage ('VIPB_Build'){
-          vipPaths.each{
+          vipbPaths.each{
             vipbBuild(it,lvVersion)
           }
         }
