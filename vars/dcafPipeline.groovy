@@ -6,7 +6,7 @@
 
 //This script further assumes that Jenkins is configured (via the Pipeline Shared Libraries plugin) to implicitly include https://github.com/LabVIEW-DCAF/buildsystem
 
-def call(utfPath,vipbPath,lvVersion){
+def call(utfPaths,vipbPaths,lvVersion){
 def continueBuild
   node{
         echo 'Starting build...'
@@ -25,11 +25,15 @@ def continueBuild
           bat 'mkdir build_temp'
         }
         stage ('UTF'){
-          utfTest(utfPath)    
+          utfPaths.each{
+            utfTest(it)  //Run tests on all projects    
+          }
         }
 
         stage ('VIPB_Build'){
-          vipbBuild(vipbPath,lvVersion)
+          vipPaths.each{
+            vipbBuild(it,lvVersion)
+          }
         }
 
         stage ('VIP_Deploy'){
