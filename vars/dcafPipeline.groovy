@@ -32,7 +32,7 @@ def continueBuild
         }
 
         stage ('VIPB_Build'){
-          vipbPaths.each{vipbPath ->
+          vipbPaths.each{vipbPath->
             echo 'VIPB path: 'vipbPath
             vipbBuild(vipbPath,lvVersion)
           }
