@@ -26,12 +26,14 @@ def continueBuild
         }
         stage ('UTF'){
           utfPaths.each{
+            echo 'UTF path: '+it
             utfTest(it)  //Run tests on all projects    
           }
         }
 
         stage ('VIPB_Build'){
           vipbPaths.each{
+            echo 'VIPB path: 'it
             vipbBuild(it,lvVersion)
           }
         }
