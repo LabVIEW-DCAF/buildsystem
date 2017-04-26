@@ -42,7 +42,9 @@ def continueBuild
           vipPublish('DCAF Unstable')
         }
       stage ('SCM commit'){
-        commitPackageToGit(vipbPath)
+        vipbPaths.each{vipbPath->
+          commitPackageToGit(vipbPath)
+        }
       }
         stage ('Post-Clean'){
           postClean()
