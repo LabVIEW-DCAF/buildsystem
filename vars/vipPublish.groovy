@@ -13,22 +13,23 @@ def call(repoName){
 
         if(files.length){
 //make this a loop across all items in the files[] array.
-                
-                echo """${files[0].name}
+                files.each{vip_file->
+                        echo """${vip_file.name}
 
-                        ${files[0].path}
+                                ${vip_file.path}
 
-                        ${files[0].directory}
+                                ${vip_file.directory}
 
-                        ${files[0].length}
+                                ${vip_file.length}
 
-                        ${files[0].lastModified}"""
-                def vip_json = JsonOutput.toJson(['VIP Path': env.WORKSPACE+"\\"+files[0].path,"Repo Name":"${repoName}"])
-                echo vip_json
+                                ${vip_file.lastModified}"""
+                        def vip_json = JsonOutput.toJson(['VIP Path': env.WORKSPACE+"\\"+vip_file.path,"Repo Name":"${repoName}"])
+                        echo vip_json
 
-                def vip_response = httpRequest "http://localhost:8002/LabVIEWCIService/VIP_Publish?JSON="+java.net.URLEncoder.encode(vip_json, "UTF-8").replaceAll("\\+", "%20")
-                println("Status: "+vip_response.status)
-                println("Content: "+vip_response.content)
+                        def vip_response = httpRequest "http://localhost:8002/LabVIEWCIService/VIP_Publish?JSON="+java.net.URLEncoder.encode(vip_json, "UTF-8").replaceAll("\\+", "%20")
+                        println("Status: "+vip_response.status)
+                        println("Content: "+vip_response.content)
+                }
         }
         else{
                 echo 'No VIP files found.'
