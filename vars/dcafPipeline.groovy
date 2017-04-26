@@ -2,11 +2,11 @@
 
 //note: this script assumes that it will be invoked from another script after that script has defined the necessary parameters
 
-//These are: utfPath, vipbPath, vipbInstall, lvVersion, repoName
+//These are: utfPath, vipbPath, lvVersion
 
 //This script further assumes that Jenkins is configured (via the Pipeline Shared Libraries plugin) to implicitly include https://github.com/LabVIEW-DCAF/buildsystem
 
-def call(utfPath,vipbPath,lvVersion,repoName){
+def call(utfPath,vipbPath,lvVersion){
 def continueBuild
   node{
         echo 'Starting build...'
