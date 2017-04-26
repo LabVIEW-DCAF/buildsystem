@@ -25,16 +25,16 @@ def continueBuild
           bat 'mkdir build_temp'
         }
         stage ('UTF'){
-          utfPaths.each{
-            echo 'UTF path: '+it
-            utfTest(it)  //Run tests on all projects    
+          utfPaths.each{utfPath->
+            echo 'UTF path: '+utfPath
+            utfTest(utfPath)  //Run tests on all projects    
           }
         }
 
         stage ('VIPB_Build'){
-          vipbPaths.each{
-            echo 'VIPB path: 'it
-            vipbBuild(it,lvVersion)
+          vipbPaths.each{vipbPath ->
+            echo 'VIPB path: 'vipbPath
+            vipbBuild(vipbPath,lvVersion)
           }
         }
 
