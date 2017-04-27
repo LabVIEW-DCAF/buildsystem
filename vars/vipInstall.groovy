@@ -15,7 +15,7 @@ def call(vipName, lvVersion) {
 
         println("Content: "+vip_install_response.content)       
             if (vip_install_response.status!=200){
-                error("Call to CI Server method VIP_INSTALL failed with error: "+vip_response.content)
+                error("Call to CI Server method VIP_INSTALL failed with error: "+vip_install_response.content)
             }
         echo 'Magic wait of 5 seconds...'
 
