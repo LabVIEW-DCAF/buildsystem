@@ -41,11 +41,11 @@ def continueBuild
         stage ('VIP_Deploy'){
           vipPublish('DCAF Unstable')
         }
-      stage ('SCM commit'){
-        vipbPaths.each{vipbPath->
-          commitPackageToGit(vipbPath)
-        }
-      }
+      //stage ('SCM commit'){
+      //  vipbPaths.each{vipbPath->
+      //    commitPackageToGit(vipbPath)
+      //  }
+     // }
         stage ('Post-Clean'){
           postClean()
         }    
