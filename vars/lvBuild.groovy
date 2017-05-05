@@ -9,7 +9,7 @@ def call(path, target_name, spec_name) {
         def lvb_response = httpRequest validResponseCodes: "200,500", url: "http://localhost:8002/LabVIEWCIService/LabVIEW_Build?JSON="+java.net.URLEncoder.encode(lvBuild_json, "UTF-8").replaceAll("\\+", "%20")
         println("Status: "+lvb_response.status)
         println("Content: "+lvb_response.content)
-        if (vipb_response.status!=200){
+        if (lvb_response.status!=200){
                 error("Call to CI Server method LabVIEW_Build failed with error: "+lvb_response.content)
             }
         echo 'Magic wait of 5 seconds...'
