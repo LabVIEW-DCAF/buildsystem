@@ -3,7 +3,7 @@ import groovy.json.JsonOutput
 def call(path, target_name, spec_name) {
         echo 'Build the package'
         
-        def lvBuild_json = JsonOutput.toJson([Executor_Number: env.EXECUTOR_NUMBER.toString(), Workspace_Path : env.WORKSPACE+'\\build_temp'], 'Build_Spec': spec_name,'Target':target_name,'Project_Path': "${WORKSPACE}\\${path}","Auto_Version_Increment": true])
+        def lvBuild_json = JsonOutput.toJson([Executor_Number: env.EXECUTOR_NUMBER.toString(), Workspace_Path : env.WORKSPACE+'\\build_temp', 'Build_Spec': spec_name,'Target':target_name,'Project_Path': "${WORKSPACE}\\${path}","Auto_Version_Increment": true])
         echo lvBuild_json
         
         def lvb_response = httpRequest validResponseCodes: "200,500", url: "http://localhost:8002/LabVIEWCIService/LabVIEW_Build?JSON="+java.net.URLEncoder.encode(lvBuild_json, "UTF-8").replaceAll("\\+", "%20")
