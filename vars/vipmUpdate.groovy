@@ -9,7 +9,7 @@ def call(lvVersion) {
 
         echo vipm_update_json       
 
-        def vipm_update_response = httpRequest httpRequest validResponseCodes: "200,500", url:"http://localhost:8002/LabVIEWCIService/VIPM_UPDATE?JSON="+java.net.URLEncoder.encode(vipm_update_json, "UTF-8").replaceAll("\\+", "%20")
+        def vipm_update_response = httpRequest validResponseCodes: "200,500", url:"http://localhost:8002/LabVIEWCIService/VIPM_UPDATE?JSON="+java.net.URLEncoder.encode(vipm_update_json, "UTF-8").replaceAll("\\+", "%20")
 
         println("Status: "+vipm_update_response.status)
 
