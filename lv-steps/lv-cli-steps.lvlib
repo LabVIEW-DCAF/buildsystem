@@ -8,6 +8,7 @@
 		<Item Name="lv-build.vi" Type="VI" URL="../steps/lv-build.vi"/>
 		<Item Name="run-utf.vi" Type="VI" URL="../steps/run-utf.vi"/>
 		<Item Name="run-vi-analyzer.vi" Type="VI" URL="../steps/run-vi-analyzer.vi"/>
+		<Item Name="run-vi-tester.vi" Type="VI" URL="../steps/run-vi-tester.vi"/>
 		<Item Name="vimUpdate.vi" Type="VI" URL="../steps/vimUpdate.vi"/>
 		<Item Name="vipBuild.vi" Type="VI" URL="../steps/vipBuild.vi"/>
 		<Item Name="vipcApply.vi" Type="VI" URL="../steps/vipcApply.vi"/>
