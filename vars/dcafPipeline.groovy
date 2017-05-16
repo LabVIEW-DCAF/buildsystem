@@ -27,7 +27,7 @@ def continueBuild
         stage ('UTF'){
           utfPaths.each{utfPath->
             echo 'UTF path: '+utfPath
-            utfTest(utfPath)  //Run tests on all projects    
+            utfTest(utfPath, lvVersion)  //Run tests on all projects    
           }
         }
 
