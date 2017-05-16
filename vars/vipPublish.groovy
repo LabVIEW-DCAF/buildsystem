@@ -18,7 +18,7 @@ def call(repoName){
                                 ${vip_file.length}
 
                                 ${vip_file.lastModified}"""
-                        bat 'labview-cli --kill "L:\vipPublish.vi" -- ${vip_file.path} ${repoName}'
+                        bat 'labview-cli --kill "L:\\vipPublish.vi" -- ${vip_file.path} ${repoName}'
                 }
         }
         else{
