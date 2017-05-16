@@ -24,6 +24,4 @@ def call(repoName){
         else{
                 echo 'No VIP files found.'
         }
-        echo 'Magic sleep to let LabVIEW breathe'
-        sleep(5)
 }        
