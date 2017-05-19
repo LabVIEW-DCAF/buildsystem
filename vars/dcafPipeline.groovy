@@ -8,7 +8,7 @@
 
 def call(utfPaths,vipbPaths,lvVersion){
 def continueBuild
-  node{
+  node(lvVersion){
         echo 'Starting build...'
       stage ('Pre-Clean'){
         preClean()
