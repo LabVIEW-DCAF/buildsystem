@@ -8,7 +8,7 @@
 
 def call(utfPaths,vipbPaths,lvVersion){
 
-switch(lvVersion){
+switch(lvVersion){  //This is to abstract out the different Jenkinsfile conventions of setting version to 14.0 instead of 2014.
   case "14.0":
     lvVersion="2014"
     break
