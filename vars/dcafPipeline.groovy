@@ -7,6 +7,22 @@
 //This script further assumes that Jenkins is configured (via the Pipeline Shared Libraries plugin) to implicitly include https://github.com/LabVIEW-DCAF/buildsystem
 
 def call(utfPaths,vipbPaths,lvVersion){
+
+switch(lvVersion){
+  case "14.0"
+    lvVersion="2014"
+    break
+  case "15.0"
+    lvVersion="2015"
+    break
+  case "16.0"
+    lvVersion="2016"
+    break
+  case "17.0"
+    lvVersion="2017"
+    break
+}
+
 def continueBuild
   node(lvVersion){
         echo 'Starting build...'
