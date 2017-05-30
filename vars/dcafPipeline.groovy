@@ -9,16 +9,16 @@
 def call(utfPaths,vipbPaths,lvVersion){
 
 switch(lvVersion){
-  case "14.0"
+  case "14.0":
     lvVersion="2014"
     break
-  case "15.0"
+  case "15.0":
     lvVersion="2015"
     break
-  case "16.0"
+  case "16.0":
     lvVersion="2016"
     break
-  case "17.0"
+  case "17.0":
     lvVersion="2017"
     break
 }
