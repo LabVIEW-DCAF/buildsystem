@@ -49,6 +49,8 @@ def continueBuild
 
         stage ('VIPB_Build'){
           vipbPaths.each{vipbPath->
+            echo 'VIPB version check'
+            setVIPBuildNumber(vipbPath,'DCAF Unstable')
             echo 'VIPB path: '+vipbPath
             vipbBuild(vipbPath,lvVersion)
           }
