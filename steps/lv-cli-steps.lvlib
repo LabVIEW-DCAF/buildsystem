@@ -13,6 +13,7 @@
 		<Item Name="run-utf.vi" Type="VI" URL="../run-utf.vi"/>
 		<Item Name="run-vi-analyzer.vi" Type="VI" URL="../run-vi-analyzer.vi"/>
 		<Item Name="run-vi-tester.vi" Type="VI" URL="../run-vi-tester.vi"/>
+		<Item Name="setVipBuildNumber.vi" Type="VI" URL="../setVipBuildNumber.vi"/>
 		<Item Name="vipbBuild.vi" Type="VI" URL="../vipbBuild.vi"/>
 		<Item Name="vipcApply.vi" Type="VI" URL="../vipcApply.vi"/>
 		<Item Name="vipInstall.vi" Type="VI" URL="../vipInstall.vi"/>
