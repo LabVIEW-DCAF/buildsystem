@@ -7,8 +7,24 @@
 //This script further assumes that Jenkins is configured (via the Pipeline Shared Libraries plugin) to implicitly include https://github.com/LabVIEW-DCAF/buildsystem
 
 def call(utfPaths,vipbPaths,lvVersion){
+
+switch(lvVersion){  //This is to abstract out the different Jenkinsfile conventions of setting version to 14.0 instead of 2014.
+  case "14.0":
+    lvVersion="2014"
+    break
+  case "15.0":
+    lvVersion="2015"
+    break
+  case "16.0":
+    lvVersion="2016"
+    break
+  case "17.0":
+    lvVersion="2017"
+    break
+}
+
 def continueBuild
-  node{
+  node(lvVersion){
         echo 'Starting build...'
       stage ('Pre-Clean'){
         preClean()
@@ -27,12 +43,14 @@ def continueBuild
         stage ('UTF'){
           utfPaths.each{utfPath->
             echo 'UTF path: '+utfPath
-            utfTest(utfPath)  //Run tests on all projects    
+            utfTest(utfPath, lvVersion)  //Run tests on all projects    
           }
         }
 
         stage ('VIPB_Build'){
           vipbPaths.each{vipbPath->
+            echo 'VIPB version check'
+            setVIPBuildNumber(vipbPath,'DCAF Unstable')
             echo 'VIPB path: '+vipbPath
             vipbBuild(vipbPath,lvVersion)
           }
