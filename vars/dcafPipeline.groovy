@@ -31,7 +31,9 @@ def continueBuild
       }
       stage ('SCM_Checkout'){
         echo 'Attempting to get source from repo...'
-        checkout scm
+        timeout(time: 5, unit: 'MINUTES'){
+          checkout scm
+        }
       }
         stage ('Check Preconditions for Build'){
         continueBuild=checkCommits()
@@ -43,7 +45,9 @@ def continueBuild
         stage ('UTF'){
           utfPaths.each{utfPath->
             echo 'UTF path: '+utfPath
-            utfTest(utfPath, lvVersion)  //Run tests on all projects    
+            timeout(time: 30, unit: 'MINUTES'){
+              utfTest(utfPath, lvVersion)  //Run tests on all projects    
+            }
           }
         }
 
@@ -52,12 +56,16 @@ def continueBuild
             echo 'VIPB version check'
             setVIPBuildNumber(vipbPath,'DCAF Unstable')
             echo 'VIPB path: '+vipbPath
-            vipbBuild(vipbPath,lvVersion)
+            timeout(time: 60, unit: 'MINUTES'){
+              vipbBuild(vipbPath,lvVersion)
+            }
           }
         }
 
         stage ('VIP_Deploy'){
-          vipPublish('DCAF Unstable')
+          timeout(time: 10, unit: 'MINUTES'){
+            vipPublish('DCAF Unstable')
+          }
         }
       //stage ('SCM commit'){
       //  vipbPaths.each{vipbPath->
