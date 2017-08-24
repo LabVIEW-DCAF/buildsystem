@@ -25,7 +25,7 @@ def _post_file(file_data, folder, file_name, header):
     # post a picture to a repo
     url = 'https://api.github.com/repos/theSloopJohnB/thesloopjohnb/contents/%s/%s' % (folder, file_name)
     
-    r=requests.put(url, data=new_file_data, headers=header)
+    r=requests.post(url, data=new_file_data, headers=header)
     if (r.ok):
         _moduleLogger.info('Response code: %s', r.status_code)
     else:
@@ -41,7 +41,7 @@ def _post_comment_to_pr(urlPicPairs, pullRequestInfo, prNumber, header):
 
 LabVIEW Diff Robot here with some diffs served up hot for your pull request.
 
-Notice something funny? Help fix me on [my GitHub repo.](https://github.com/theSloopJohnB/LabVIEW-Diff)
+Notice something funny? Help fix me on [my GitHub repo.](https://github.com/LabVIEW-DCAF/buildsystem)
 
 
 """
@@ -49,7 +49,7 @@ Notice something funny? Help fix me on [my GitHub repo.](https://github.com/theS
         body += formatString % pair
 
     org, repo, _ = pullRequestInfo.split('/')
-    url = "https://api.github.com/repos/%s/%s/issues/%s" % (org, repo, prNumber)
+    url = "https://api.github.com/repos/%s/%s/issues/%s/comments" % (org, repo, prNumber)
     data = json.dumps({"body":body})
     r = requests.post(url, data=data, headers=header)
     if (r.ok):
