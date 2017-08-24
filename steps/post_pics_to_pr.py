@@ -25,7 +25,7 @@ def _post_file(file_data, folder, file_name, header):
     # post a picture to a repo
     url = 'https://api.github.com/repos/theSloopJohnB/thesloopjohnb/contents/%s/%s' % (folder, file_name)
     
-    r=requests.post(url, data=new_file_data, headers=header)
+    r=requests.put(url, data=new_file_data, headers=header)
     if (r.ok):
         _moduleLogger.info('Response code: %s', r.status_code)
     else:
