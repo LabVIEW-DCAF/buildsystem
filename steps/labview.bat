@@ -1,7 +1,7 @@
-SET vi1=%~f1
-SET vi2=%~f2
-SET working_dir=%~f3
-SET lv_version=%~f4
+@SET vi1=%~f1
+@SET vi2=%~f2
+@SET working_dir=%~f3
+@SET lv_version=%4
 
 @REM only run if both files are VIs.
 
