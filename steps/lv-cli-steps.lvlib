@@ -10,6 +10,7 @@
 	<Item Name="steps" Type="Folder">
 		<Item Name="echo.vi" Type="VI" URL="../echo.vi"/>
 		<Item Name="lv-build.vi" Type="VI" URL="../lv-build.vi"/>
+		<Item Name="lvDiff.vi" Type="VI" URL="../lvDiff.vi"/>
 		<Item Name="run-utf.vi" Type="VI" URL="../run-utf.vi"/>
 		<Item Name="run-vi-analyzer.vi" Type="VI" URL="../run-vi-analyzer.vi"/>
 		<Item Name="run-vi-tester.vi" Type="VI" URL="../run-vi-tester.vi"/>
