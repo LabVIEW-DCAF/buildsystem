@@ -35,8 +35,8 @@ def continueBuild
           checkout scm
         }
       }
-      // If this change is a pull request and the DIFFING_ENABLED variable is set on the jenkins master, diff vis.
-      if (env.CHANGE_ID && env.DIFFING_ENABLED) {
+      // If this change is a pull request and the DIFFING_PIC_REPO variable is set on the jenkins master, diff vis.
+      if (env.CHANGE_ID && env.DIFFING_PIC_REPO) {
         stage ('Diff VIs'){
           lvDiff(lvVersion)
         }
