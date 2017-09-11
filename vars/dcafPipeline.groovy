@@ -73,10 +73,11 @@ def continueBuild
             }
           }
         }
-
-        stage ('VIP_Deploy'){
-          timeout(time: 10, unit: 'MINUTES'){
-            vipPublish('DCAF Unstable')
+        if (env.BRANCH_NAME == 'master') { // Only deploy if on the master branch.
+          stage ('VIP_Deploy'){
+            timeout(time: 10, unit: 'MINUTES'){
+              vipPublish('DCAF Unstable')
+            }
           }
         }
       //stage ('SCM commit'){
