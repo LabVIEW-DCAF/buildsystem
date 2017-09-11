@@ -39,7 +39,13 @@ def _parse_options(args):
         "-i", "--info",
         dest="info",
         metavar="INFO",
-        help="Information about the org, repo, and pull request you are trying to use, e.g. 'LabVIEW-DCAF/IntegrationTesting/PR-13"
+        help="Information about the org, repo, and pull request you are trying to use, e.g. 'LabVIEW-DCAF/IntegrationTesting/PR-13'"
+    )
+    parser.add_option(
+        "-r", "--pic-repo",
+        dest="picRepo",
+        metavar="REPO",
+        help="The owner and repo to post to on github, e.g. 'theSloopJohnB/thesloopjohnb' for https://github.com/theSloopJohnB/thesloopjohnb"
     )
     
     debugGroup = optparse.OptionGroup(parser, "Debug")
@@ -100,7 +106,7 @@ def main(args):
         print(doctest.testmod())
         return
     else:
-    	post_pics_to_pr.post_pics_to_pr(options.token, options.picDir, options.info, options.pr)
+    	post_pics_to_pr.post_pics_to_pr(options.token, options.picDir, options.info, options.pr, options.picRepo)
 
     return 0
 
