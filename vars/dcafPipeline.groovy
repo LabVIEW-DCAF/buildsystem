@@ -24,7 +24,7 @@ switch(lvVersion){  //This is to abstract out the different Jenkinsfile conventi
 }
 
 def continueBuild
-  node("proto"){
+  node(lvVersion){
         echo 'Starting build...'
       stage ('Pre-Clean'){
         preClean()
