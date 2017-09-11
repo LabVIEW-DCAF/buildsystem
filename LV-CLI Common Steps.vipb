@@ -1,7 +1,7 @@
-<VI_Package_Builder_Settings Version="0.6" Created_Date="2017-05-16 13:34:33" Modified_Date="2017-08-07 15:56:09" Creator="Lee Harding" Comments="" ID="96901573333b89d88b9d59ba7f351102">
+<VI_Package_Builder_Settings Version="0.6" Created_Date="2017-05-16 13:34:33" Modified_Date="2017-09-11 16:12:44" Creator="Lee Harding" Comments="" ID="2ab23f0ce4d2ed9ffdaba4b8639720c3">
   <Library_General_Settings>
     <Package_File_Name>ni_lib_LV_CLI_Common_Steps</Package_File_Name>
-    <Library_Version>1.0.2.15</Library_Version>
+    <Library_Version>1.0.2.16</Library_Version>
     <Auto_Increment_Version>false</Auto_Increment_Version>
     <Library_Source_Folder>.</Library_Source_Folder>
     <Library_Output_Folder>exports</Library_Output_Folder>
