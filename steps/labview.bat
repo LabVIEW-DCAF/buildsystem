@@ -11,6 +11,7 @@
 
 :VI2Check
 @if "%vi2:~-3%" == ".vi" GOTO :DIFF_VI
+@GOTO :END
 
 :DIFF_VI
     labview-cli --kill --lv-ver %lv_version% L:\lvDiff.vi -- "%vi1%" "%vi2%" "%working_dir%"
