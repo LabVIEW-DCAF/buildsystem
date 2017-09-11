@@ -68,4 +68,5 @@ def post_pics_to_pr(token, localPicfileDirectory, pullRequestInfo, prNumber):
         picUrl = _post_file(picData, folder, os.path.split(pic)[1], header)
         picUrls.append((pic, picUrl))
 
-    _post_comment_to_pr(picUrls, pullRequestInfo, prNumber, header) 
+    if picUrls != []:
+        _post_comment_to_pr(picUrls, pullRequestInfo, prNumber, header) 
