@@ -25,7 +25,7 @@ switch(lvVersion){  //This is to abstract out the different Jenkinsfile conventi
 
 def continueBuild
   node(lvVersion){
-        echo 'Starting build...'
+      echo 'Starting build...'
       stage ('Pre-Clean'){
         preClean()
       }
@@ -38,7 +38,15 @@ def continueBuild
       // If this change is a pull request and the DIFFING_PIC_REPO variable is set on the jenkins master, diff vis.
       if (env.CHANGE_ID && env.DIFFING_PIC_REPO) {
         stage ('Diff VIs'){
-          lvDiff(lvVersion)
+          try {
+            timeout(time: 60, unit: 'MINUTES') {
+              lvDiff(lvVersion)
+              echo 'Diff Succeeded!'
+            }
+          } catch (err) {
+            currentBuild.result = "SUCCESS"
+            echo "Diff Failed: ${err}"
+          }  
         }
       }
       stage ('Check Preconditions for Build'){
@@ -78,7 +86,7 @@ def continueBuild
       //  vipbPaths.each{vipbPath->
       //    commitPackageToGit(vipbPath)
       //  }
-     // }
+      //}
         stage ('Post-Clean'){
           postClean()
         }    
