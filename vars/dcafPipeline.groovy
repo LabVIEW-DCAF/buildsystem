@@ -56,20 +56,30 @@ def continueBuild
         stage ('Temp Directories'){
           bat 'mkdir build_temp'
         }
-        stage ('UTF'){
-          utfPaths.each{utfPath->
-            echo 'UTF path: '+utfPath
+        stage ('UTF'){          
+          for(int i=0; i < utfPaths.size(); i++){
+            
+            //Iterate through each item in utfPaths array
+            utfPath = utfPaths[i]
+            echo 'UTF Project Path: ' +utfPath
+            
+            //Run unit tests for specified project with 30 minute timeout
             timeout(time: 30, unit: 'MINUTES'){
-              utfTest(utfPath, lvVersion)  //Run tests on all projects    
+              utfTest(utfPath, lvVersion)    
             }
-          }
+          }  
         }
 
         stage ('VIPB_Build'){
-          vipbPaths.each{vipbPath->
+          for(int j=0; j < vipbPaths.size(); j++){
+            
+            //Iterate through each item in vipbPaths array
+            vipbPath = vipbPaths[j]
             echo 'VIPB version check'
             setVIPBuildNumber(vipbPath,'DCAF Unstable')
             echo 'VIPB path: '+vipbPath
+            
+            //Start VI Package build with 60 minute timeout
             timeout(time: 60, unit: 'MINUTES'){
               vipbBuild(vipbPath,lvVersion)
             }
