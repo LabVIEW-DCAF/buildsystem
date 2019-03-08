@@ -35,20 +35,7 @@ def continueBuild
           checkout scm
         }
       }
-      // If this change is a pull request and the DIFFING_PIC_REPO variable is set on the jenkins master, diff vis.
-      if (env.CHANGE_ID && env.DIFFING_PIC_REPO) {
-        stage ('Diff VIs'){
-          try {
-            timeout(time: 60, unit: 'MINUTES') {
-              lvDiff(lvVersion)
-              echo 'Diff Succeeded!'
-            }
-          } catch (err) {
-            currentBuild.result = "SUCCESS"
-            echo "Diff Failed: ${err}"
-          }  
-        }
-      }
+      
       stage ('Check Preconditions for Build'){
         continueBuild=checkCommits()
       }
@@ -70,7 +57,22 @@ def continueBuild
           }  
         }
 
-        stage ('VIPB_Build'){
+      // If this change is a pull request and the DIFFING_PIC_REPO variable is set on the jenkins master, diff vis.
+      if (env.CHANGE_ID && env.DIFFING_PIC_REPO) {
+        stage ('Diff VIs'){
+          try {
+            timeout(time: 60, unit: 'MINUTES') {
+              lvDiff(lvVersion)
+              echo 'Diff Succeeded!'
+            }
+          } catch (err) {
+            currentBuild.result = "SUCCESS"
+            echo "Diff Failed: ${err}"
+          }  
+        }
+      }
+      
+      stage ('VIPB_Build'){
           for(int j=0; j < vipbPaths.size(); j++){
             
             //Iterate through each item in vipbPaths array
